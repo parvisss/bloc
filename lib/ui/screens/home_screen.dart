@@ -14,24 +14,26 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     context.read<ThemeChangerCubit>();
     return Scaffold(
-      body: Builder(builder: (context) {
-        return BlocBuilder<ThemeChangerCubit, bool>(
-          builder: (context, themeState) => Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ListTile(
-                title: const Text("Theme Mode"),
-                trailing: Switch.adaptive(
-                  value: themeState,
-                  onChanged: (bool newValue) {
-                    context.read<ThemeChangerCubit>().changeTheme(newValue);
-                  },
+      body: Builder(
+        builder: (context) {
+          return BlocBuilder<ThemeChangerCubit, bool>(
+            builder: (context, themeState) => Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ListTile(
+                  title: const Text("Theme Mode"),
+                  trailing: Switch.adaptive(
+                    value: themeState,
+                    onChanged: (bool newValue) {
+                      context.read<ThemeChangerCubit>().changeTheme(newValue);
+                    },
+                  ),
                 ),
-              ),
-            ],
-          ),
-        );
-      }),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
